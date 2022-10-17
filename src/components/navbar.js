@@ -8,7 +8,7 @@ import {
   useTheme,
   useMediaQuery,
   AppBar,
-  Toolbar
+  Toolbar,
 } from "@material-ui/core";
 import DrawerMenu from "./drawerMenu";
 
@@ -18,11 +18,11 @@ const truncate = (input, len) =>
 const useStyles = makeStyles((theme) => ({
   navlinks: {
     marginLeft: theme.spacing(5),
-    display: "flex"
+    display: "flex",
   },
   logo: {
     flexGrow: "1",
-    cursor: "pointer"
+    cursor: "pointer",
   },
   link: {
     textDecoration: "none",
@@ -31,17 +31,17 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(20),
     "&:hover": {
       color: "yellow",
-      borderBottom: "1px solid white"
-    }
+      borderBottom: "1px solid white",
+    },
   },
   hamburger: {
-    marginLeft: "auto"
+    marginLeft: "auto",
   },
   mobileNav: {
     display: "flex",
     justifyContent: "space-between",
-    background: "black"
-  }
+    background: "black",
+  },
 }));
 
 export default function Navbar() {
@@ -54,7 +54,7 @@ export default function Navbar() {
     NETWORK: {
       NAME: "",
       SYMBOL: "",
-      ID: 0
+      ID: 0,
     },
     NFT_NAME: "",
     SYMBOL: "",
@@ -64,7 +64,7 @@ export default function Navbar() {
     GAS_LIMIT: 0,
     MARKETPLACE: "",
     MARKETPLACE_LINK: "",
-    SHOW_BACKGROUND: false
+    SHOW_BACKGROUND: false,
   });
 
   const getData = () => {
@@ -77,8 +77,8 @@ export default function Navbar() {
     const configResponse = await fetch("/config/config.json", {
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json"
-      }
+        Accept: "application/json",
+      },
     });
     const config = await configResponse.json();
     SET_CONFIG(config);
@@ -108,7 +108,10 @@ export default function Navbar() {
           <Toolbar className={classes.mobileNav}>
             {/*<img className="nav--logo" src="/config/images/logo.png" />*/}
             <img src={"/logo192.png"} height="50px" alt="" />
-            <DrawerMenu className={classes.hamburger} />
+            <DrawerMenu
+              className={classes.hamburger}
+              address={truncate(blockchain.account, 7)}
+            />
           </Toolbar>
         </AppBar>
       ) : (

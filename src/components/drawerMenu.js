@@ -37,7 +37,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-export default function DrawerMenu() {
+export default function DrawerMenu(props) {
   const classes = useStyles();
   const [openDrawer, setOpenDrawer] = useState(false);
 
@@ -120,6 +120,25 @@ export default function DrawerMenu() {
             sx={{ m: 1, width: 0.5 }}
           >
             Connect
+          </Button>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            mt: "1em",
+            position: "relative",
+            left: "50%",
+            transform: "translate(-50%, 0)"
+          }}
+        >
+          <Button
+            variant="contained"
+            color="secondary"
+            size="large"
+            sx={{ m: 1, width: 0.5 }}
+          >
+            {props.address}
           </Button>
         </Box>
       </Drawer>
