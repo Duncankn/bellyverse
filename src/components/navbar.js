@@ -99,8 +99,7 @@ export default function Navbar() {
 
   const classes = useStyles();
   const theme = useTheme();
-  //const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const isMobile = false;
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   
   return (
     <>
