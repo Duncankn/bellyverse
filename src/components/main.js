@@ -1887,7 +1887,7 @@ export default function Main() {
       dispatch(fetchData(blockchain.account));
       setWalletIsConnected(true);
     } else {
-      dispatch(connect());
+      //dispatch(connect());
       dispatch(fetchData(blockchain.account));
     }
   };
