@@ -99,54 +99,41 @@ export default function Navbar() {
 
   const classes = useStyles();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  //const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <>
-      {isMobile ? (
-        <AppBar position="sticky">
-          <Toolbar className={classes.mobileNav}>
-            {/*<img className="nav--logo" src="/config/images/logo.png" />*/}
-            <img src={"/logo192.png"} height="50px" alt="" />
-            <DrawerMenu
-              className={classes.hamburger}
-              address={truncate(blockchain.account, 7)}
-            />
-          </Toolbar>
-        </AppBar>
-      ) : (
-        <nav>
-          {/*<img className="nav--logo" src="/config/images/logo.png" />*/}
-          <img src={"/logo192.png"} height="50px" alt="" />
-          <h1 className="app--name">BellyVerse</h1>
-          <ul className="nav--menu">
-            <li>
-              <Link to="/">Spaceship</Link>
-            </li>
-            <li>
-              <Link to="/gallery">Gallery</Link>
-            </li>
-          </ul>
-          {blockchain.account === null || blockchain.contract === null ? (
-            <div className="nav--acc-info">
-              <button className="nav--button" onClick={connectClick}>
-                Connect
-              </button>
-              {/*<p>Connect to the {CONFIG.NETWORK.NAME} network</p> */}
-            </div>
-          ) : (
-            <div className="nav--acc-info">
-              <p>
-                {CONFIG.SYMBOL} : {data.balanceOf}
-              </p>
-              <button className="nav--button">
-                {" "}
-                {truncate(blockchain.account, 7)}{" "}
-              </button>
-            </div>
-          )}
-        </nav>
-      )}
+      <nav>
+        {/*<img className="nav--logo" src="/config/images/logo.png" />*/}
+        <img src={"/logo192.png"} height="50px" alt="" />
+        <h1 className="app--name">BellyVerse</h1>
+        <ul className="nav--menu">
+          <li>
+            <Link to="/">Spaceship</Link>
+          </li>
+          <li>
+            <Link to="/gallery">Gallery</Link>
+          </li>
+        </ul>
+        {blockchain.account === null || blockchain.contract === null ? (
+          <div className="nav--acc-info">
+            <button className="nav--button" onClick={connectClick}>
+              Connect
+            </button>
+            {/*<p>Connect to the {CONFIG.NETWORK.NAME} network</p> */}
+          </div>
+        ) : (
+          <div className="nav--acc-info">
+            <p>
+              {CONFIG.SYMBOL} : {data.balanceOf}
+            </p>
+            <button className="nav--button">
+              {" "}
+              {truncate(blockchain.account, 7)}{" "}
+            </button>
+          </div>
+        )}
+      </nav>
       <Outlet />
     </>
   );
