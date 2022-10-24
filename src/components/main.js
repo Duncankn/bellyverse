@@ -9,7 +9,7 @@ import {
   Rect,
   Sprite,
   Stage,
-  Text
+  Text,
 } from "react-konva";
 import { useDispatch, useSelector } from "react-redux";
 import useImage from "use-image";
@@ -66,7 +66,7 @@ export default function Main() {
     NETWORK: {
       NAME: "",
       SYMBOL: "",
-      ID: 0
+      ID: 0,
     },
     NFT_NAME: "",
     SYMBOL: "",
@@ -76,14 +76,14 @@ export default function Main() {
     GAS_LIMIT: 0,
     MARKETPLACE: "",
     MARKETPLACE_LINK: "",
-    SHOW_BACKGROUND: false
+    SHOW_BACKGROUND: false,
   });
 
   const [state, setState] = React.useState({
     cursor: {
       x: null,
-      y: null
-    }
+      y: null,
+    },
   });
   //======================================================================
   //BGM player
@@ -100,228 +100,35 @@ export default function Main() {
     idleUp: [0, 96, 96, 96],
     walkLeft: [0, 0, 96, 96, 96, 0, 96, 96, 194, 0, 96, 96, 290, 0, 96, 96],
     walkRight: [
-      0,
-      96,
-      96,
-      96,
-      96,
-      96,
-      96,
-      96,
-      194,
-      96,
-      96,
-      96,
-      290,
-      96,
-      96,
-      96
+      0, 96, 96, 96, 96, 96, 96, 96, 194, 96, 96, 96, 290, 96, 96, 96,
     ],
     idleLeft: [290, 0, 96, 96],
     idleRight: [0, 96, 96, 96],
     arrow: [
-      0,
-      0,
+      0, 0, 48, 48, 48, 0, 48, 48, 96, 0, 48, 48, 144, 0, 48, 48, 192, 0, 48,
       48,
-      48,
-      48,
-      0,
-      48,
-      48,
-      96,
-      0,
-      48,
-      48,
-      144,
-      0,
-      48,
-      48,
-      192,
-      0,
-      48,
-      48
     ],
     clothing: [
-      0,
-      0,
-      96,
-      96,
-      96,
-      0,
-      96,
-      96,
-      192,
-      0,
-      96,
-      96,
-      288,
-      0,
-      96,
-      96,
-      384,
-      0,
-      96,
-      96,
-      480,
-      0,
-      96,
-      96,
-      576,
-      0,
-      96,
-      96
+      0, 0, 96, 96, 96, 0, 96, 96, 192, 0, 96, 96, 288, 0, 96, 96, 384, 0, 96,
+      96, 480, 0, 96, 96, 576, 0, 96, 96,
     ],
     robomart: [
-      0,
-      0,
-      96,
-      96,
-      96,
-      0,
-      96,
-      96,
-      192,
-      0,
-      96,
-      96,
-      288,
-      0,
-      96,
-      96,
-      384,
-      0,
-      96,
-      96,
-      480,
-      0,
-      96,
-      96,
-      576,
-      0,
-      96,
-      96,
-      672,
-      0,
-      96,
-      96,
-      768,
-      0,
-      96,
-      96,
-      864,
-      0,
-      96,
-      96
+      0, 0, 96, 96, 96, 0, 96, 96, 192, 0, 96, 96, 288, 0, 96, 96, 384, 0, 96,
+      96, 480, 0, 96, 96, 576, 0, 96, 96, 672, 0, 96, 96, 768, 0, 96, 96, 864,
+      0, 96, 96,
     ],
     recharging: [
-      0,
-      0,
-      144,
-      144,
-      144,
-      0,
-      144,
-      144,
-      288,
-      0,
-      144,
-      144,
-      432,
-      0,
-      144,
-      144
+      0, 0, 144, 144, 144, 0, 144, 144, 288, 0, 144, 144, 432, 0, 144, 144,
     ],
     discoArea: [
-      0,
-      0,
-      240,
-      192,
-      240,
-      0,
-      240,
-      192,
-      480,
-      0,
-      240,
-      192,
-      720,
-      0,
-      240,
-      192
+      0, 0, 240, 192, 240, 0, 240, 192, 480, 0, 240, 192, 720, 0, 240, 192,
     ],
     teleporter: [
-      0,
-      0,
-      192,
-      192,
-      192,
-      0,
-      192,
-      192,
-      384,
-      0,
-      192,
-      192,
-      576,
-      0,
-      192,
-      192,
-      768,
-      0,
-      192,
-      192,
-      960,
-      0,
-      192,
-      192,
-      1152,
-      0,
-      192,
-      192,
-      1344,
-      0,
-      192,
-      192,
-      1536,
-      0,
-      192,
-      192,
-      1728,
-      0,
-      192,
-      192,
-      1920,
-      0,
-      192,
-      192,
-      2112,
-      0,
-      192,
-      192,
-      2304,
-      0,
-      192,
-      192,
-      2496,
-      0,
-      192,
-      192,
-      2688,
-      0,
-      192,
-      192,
-      2880,
-      0,
-      192,
-      192,
-      3072,
-      0,
-      192,
-      192,
-      3264,
-      0,
-      192,
-      192
+      0, 0, 192, 192, 192, 0, 192, 192, 384, 0, 192, 192, 576, 0, 192, 192, 768,
+      0, 192, 192, 960, 0, 192, 192, 1152, 0, 192, 192, 1344, 0, 192, 192, 1536,
+      0, 192, 192, 1728, 0, 192, 192, 1920, 0, 192, 192, 2112, 0, 192, 192,
+      2304, 0, 192, 192, 2496, 0, 192, 192, 2688, 0, 192, 192, 2880, 0, 192,
+      192, 3072, 0, 192, 192, 3264, 0, 192, 192,
     ],
     voteSign: [
       0, // frame 1
@@ -359,71 +166,20 @@ export default function Main() {
       1152, // frame 9
       0,
       144,
-      96
+      96,
       //1296,0,144,96
     ],
     bellyPool: [
-      0,
-      0,
-      192,
-      192,
-      192,
-      0,
-      192,
-      192,
-      384,
-      0,
-      192,
-      192,
-      576,
-      0,
-      192,
-      192
+      0, 0, 192, 192, 192, 0, 192, 192, 384, 0, 192, 192, 576, 0, 192, 192,
     ],
     scanner: [
-      0,
-      0,
-      144,
-      192,
-      144,
-      0,
-      144,
-      192,
-      288,
-      0,
-      144,
-      192,
-      432,
-      0,
-      144,
-      192,
-      576,
-      0,
-      144,
-      192
+      0, 0, 144, 192, 144, 0, 144, 192, 288, 0, 144, 192, 432, 0, 144, 192, 576,
+      0, 144, 192,
     ],
     petOwners: [
-      0,
-      0,
-      144,
-      144,
-      144,
-      0,
-      144,
-      144,
-      288,
-      0,
-      144,
-      144,
-      432,
-      0,
-      144,
-      144,
-      576,
-      0,
-      144,
-      144
-    ]
+      0, 0, 144, 144, 144, 0, 144, 144, 288, 0, 144, 144, 432, 0, 144, 144, 576,
+      0, 144, 144,
+    ],
   };
 
   const [npc1Options, setNpc1Options] = useState({ image: null });
@@ -446,7 +202,7 @@ export default function Main() {
   const [teleporterOptions, setTeleporterOptions] = useState({ image: null });
   const [voteSignOptions, setVoteSignOptions] = useState({ image: null });
   const [roboPetsSignOptions, setRoboPetsSignOptions] = useState({
-    image: null
+    image: null,
   });
   const [bellyPoolOptions, setBellyPoolOptions] = useState({ image: null });
   const [scanner1Options, setScanner1Options] = useState({ image: null });
@@ -542,7 +298,7 @@ export default function Main() {
     image.onload = () => {
       // set image only when it is loaded
       setNpc1Options({
-        image: image
+        image: image,
       });
       npc1Ref.current.start();
     };
@@ -694,7 +450,7 @@ export default function Main() {
     image.onload = () => {
       // set image only when it is loaded
       setNpc3Options({
-        image: image
+        image: image,
       });
       npc3Ref.current.start();
     };
@@ -1576,7 +1332,7 @@ export default function Main() {
     var stage = e.currentTarget;
     stage = e.target.getStage();
     setState({
-      cursor: stage.getPointerPosition()
+      cursor: stage.getPointerPosition(),
     });
   };
 
@@ -1750,21 +1506,21 @@ export default function Main() {
     x: (market.x * maxWidth) / width,
     y: (market.y * maxWidth) / width,
     width: (market.width * maxWidth) / width,
-    height: (market.height * maxWidth) / width
+    height: (market.height * maxWidth) / width,
   };
 
   const aWallet = {
     x: (wallet.x * maxWidth) / width,
     y: (wallet.y * maxWidth) / width,
     width: (wallet.width * maxWidth) / width,
-    height: (wallet.height * maxWidth) / width
+    height: (wallet.height * maxWidth) / width,
   };
 
   const aGallery = {
     x: (gallery.x * maxWidth) / width,
     y: (gallery.y * maxWidth) / width,
     width: (gallery.width * maxWidth) / width,
-    height: (gallery.height * maxWidth) / width
+    height: (gallery.height * maxWidth) / width,
   };
 
   const aLab = {
@@ -1774,21 +1530,21 @@ export default function Main() {
     height: (lab.height * maxWidth) / width,
     vertice: lab.vertice.map((data) => {
       return (data * maxWidth) / width;
-    })
+    }),
   };
 
   const aDiscord = {
     x: (discord.x * maxWidth) / width,
     y: (discord.y * maxWidth) / width,
     width: discord.width * scale,
-    height: discord.height * scale
+    height: discord.height * scale,
   };
 
   const aTwitter = {
     x: (twitter.x * maxWidth) / width,
     y: (twitter.y * maxWidth) / width,
     width: (twitter.width * maxWidth) / width,
-    height: (twitter.height * maxWidth) / width
+    height: (twitter.height * maxWidth) / width,
   };
   ///////Minting dialog
 
@@ -1796,39 +1552,39 @@ export default function Main() {
     width: (tube.width * maxWidth) / width,
     height: (tube.height * maxWidth) / width,
     x: maxWidth / 2 - (tube.width * maxWidth) / width / 2,
-    y: 200 * scale
+    y: 200 * scale,
   };
 
   const aMintBox = {
     width: maxWidth,
     height: maxWidth / ratio,
     x: 0,
-    y: 0
+    y: 0,
   };
 
   const aMintQty = {
     x: aMintBox.x + aMintBox.width / 2 - 20,
-    y: aTube.y + aTube.height / 3
+    y: aTube.y + aTube.height / 3,
   };
 
   const aMintMinus = {
     x: aMintBox.x + aMintBox.width / 2 - 200 * scale - 16,
-    y: aTube.y + aTube.height / 3
+    y: aTube.y + aTube.height / 3,
   };
 
   const aMintPlus = {
     x: aMintBox.x + aMintBox.width / 2 + 200 * scale - 15,
-    y: aTube.y + aTube.height / 3
+    y: aTube.y + aTube.height / 3,
   };
 
   const aMintText = {
     x: aMintPlus.x - 60,
-    y: aMintPlus.y + 100 * scale
+    y: aMintPlus.y + 100 * scale,
   };
 
   const aMintCross = {
     x: aMintBox.x + aMintBox.width,
-    y: aMintBox.y
+    y: aMintBox.y,
   };
 
   //================================================
@@ -1849,7 +1605,7 @@ export default function Main() {
         gasPrice: String(CONFIG.GAS_PRICE),
         to: CONFIG.CONTRACT_ADDRESS,
         from: blockchain.account,
-        value: totalCostWei
+        value: totalCostWei,
       })
       .once("error", (err) => {
         console.log(err);
@@ -1887,7 +1643,7 @@ export default function Main() {
       dispatch(fetchData(blockchain.account));
       setWalletIsConnected(true);
     } else {
-      //dispatch(connect());
+      dispatch(connect());
       dispatch(fetchData(blockchain.account));
     }
   };
@@ -1896,8 +1652,8 @@ export default function Main() {
     const configResponse = await fetch("/config/config.json", {
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json"
-      }
+        Accept: "application/json",
+      },
     });
     const config = await configResponse.json();
     SET_CONFIG(config);

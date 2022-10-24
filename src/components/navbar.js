@@ -7,6 +7,7 @@ import {
   makeStyles,
   useTheme,
   useMediaQuery,
+  CssBaseline,
   AppBar,
   Toolbar,
 } from "@material-ui/core";
@@ -16,31 +17,60 @@ const truncate = (input, len) =>
   input.length > len ? `${input.substring(0, len)}...` : input;
 
 const useStyles = makeStyles((theme) => ({
-  navlinks: {
-    marginLeft: theme.spacing(5),
+  navBar: {
+    height: "50px",
     display: "flex",
+    flex: "row",
+    marginLeft: "auto",
+    verticalAlign: "center",
   },
   logo: {
-    flexGrow: "1",
-    cursor: "pointer",
+    textDecoration: "none",
+    color: "white",
+    fontFamily: '"Press Start 2P"',
+    marginLeft: "1rem",
+    verticalAlign: "top",
   },
   link: {
     textDecoration: "none",
     color: "white",
     fontSize: "20px",
-    marginLeft: theme.spacing(20),
+    fontFamily: '"Press Start 2P"',
+    marginTop: "10px",
+    marginLeft: theme.spacing(2),
+    marginRight: "30px",
+    //verticalAlign: "center",
     "&:hover": {
-      color: "yellow",
-      borderBottom: "1px solid white",
+      color: "wheat",
     },
   },
   hamburger: {
     marginLeft: "auto",
+    verticalAlign: "center",
   },
-  mobileNav: {
+  appBar: {
     display: "flex",
-    justifyContent: "space-between",
+    flex: "row",
     background: "black",
+  },
+  button: {
+    height: "46px",
+    fontSize: "16px",
+    color: "wheat",
+    background: "black",
+    borderColor: "wheat",
+    borderRadius: "23px",
+    margin: "2px",
+    padding: "2px",
+    verticalAlign: "center",
+  },
+  accInfo: {
+    display: "flex",
+    fontFamily: "Inter, Arial",
+    flex: "row",
+    marginLeft: "auto",
+    color: "wheat",
+    verticalAlign: "middle",
   },
 }));
 
@@ -99,42 +129,72 @@ export default function Navbar() {
 
   const classes = useStyles();
   const theme = useTheme();
-  //const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isDesktop = useMediaQuery(theme.breakpoints.up("sm"));
 
   return (
-    <>
-      <nav>
-        {/*<img className="nav--logo" src="/config/images/logo.png" />*/}
+    <AppBar position="static" className={classes.appBar}>
+      <CssBaseline />
+      <Toolbar>
         <img src={"/logo192.png"} height="50px" alt="" />
-        <h1 className="app--name">BellyVerse</h1>
-        <ul className="nav--menu">
-          <li>
-            <Link to="/">Spaceship</Link>
-          </li>
-          <li>
-            <Link to="/gallery">Gallery</Link>
-          </li>
-        </ul>
-        {blockchain.account === null || blockchain.contract === null ? (
-          <div className="nav--acc-info">
-            <button className="nav--button" onClick={connectClick}>
-              Connect
-            </button>
-            {/*<p>Connect to the {CONFIG.NETWORK.NAME} network</p> */}
-          </div>
-        ) : (
-          <div className="nav--acc-info">
-            <p>
-              {CONFIG.SYMBOL} : {data.balanceOf}
-            </p>
-            <button className="nav--button">
-              {" "}
-              {truncate(blockchain.account, 7)}{" "}
-            </button>
+        {!isMobile && <h2 className={classes.logo}>BellyVerse</h2>}
+
+        {isMobile && (
+          <box className={classes.navBar}>
+            {blockchain.account === null || blockchain.contract === null ? (
+              <div className={classes.accInfo}>
+                <button className={classes.button} onClick={connectClick}>
+                  Connect
+                </button>
+              </div>
+            ) : (
+              <div className={classes.accInfo}>
+                <p>
+                  {CONFIG.SYMBOL} : {data.balanceOf}
+                </p>
+                <button className={classes.button}>
+                  {" "}
+                  {truncate(blockchain.account, 6)}{" "}
+                </button>
+              </div>
+            )}
+            <DrawerMenu
+              className={classes.hamburger}
+              //address={truncate(blockchain.account, 7)}
+            />
+          </box>
+        )}
+        {!isMobile && (
+          <div className={classes.navBar}>
+            <Link to="/" className={classes.link}>
+              Spaceship
+            </Link>
+            <Link to="/gallery" className={classes.link}>
+              Gallery
+            </Link>
+
+            {blockchain.account === null || blockchain.contract === null ? (
+              <div className={classes.accInfo}>
+                <button className={classes.button} onClick={connectClick}>
+                  Connect
+                </button>
+              </div>
+            ) : (
+              <div className={classes.accInfo}>
+                <p>
+                  {CONFIG.SYMBOL} : {data.balanceOf}
+                </p>
+                <button className={classes.button}>
+                  {" "}
+                  {truncate(blockchain.account, 7)}{" "}
+                </button>
+              </div>
+            )}
           </div>
         )}
-      </nav>
+      </Toolbar>
+
       <Outlet />
-    </>
+    </AppBar>
   );
 }

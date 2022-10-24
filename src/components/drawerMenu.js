@@ -8,7 +8,7 @@ import {
   ListItemIcon,
   makeStyles,
   Button,
-  Box
+  Box,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import { FaDiscord, FaTwitter } from "react-icons/fa";
@@ -16,25 +16,28 @@ import Divider from "@mui/material/Divider";
 
 import { Link } from "react-router-dom";
 
+const truncate = (input, len) =>
+  input.length > len ? `${input.substring(0, len)}...` : input;
+
 const useStyles = makeStyles(() => ({
   paper: {
     width: 300,
-    background: "black"
+    background: "black",
   },
   link: {
     textDecoration: "none",
     color: "white",
     fontSize: "20px",
-    fontFamily: '"Press Start 2P"'
+    fontFamily: '"Press Start 2P"',
   },
   icon: {
-    color: "white"
+    color: "white",
   },
   divider: {
     mt: 2,
     mb: 2,
-    background: "white"
-  }
+    background: "white",
+  },
 }));
 
 export default function DrawerMenu() {
@@ -110,20 +113,14 @@ export default function DrawerMenu() {
             mt: "1em",
             position: "relative",
             left: "50%",
-            transform: "translate(-50%, 0)"
+            transform: "translate(-50%, 0)",
           }}
-        >
-          <Button
-            variant="contained"
-            color="secondary"
-            size="large"
-            sx={{ m: 1, width: 0.5 }}
-          >
-            Connect
-          </Button>
-        </Box>
+        ></Box>
       </Drawer>
-      <IconButton onClick={() => setOpenDrawer(!openDrawer)}>
+      <IconButton
+        onClick={() => setOpenDrawer(!openDrawer)}
+        onTap={() => setOpenDrawer(!openDrawer)}
+      >
         <MenuIcon className={classes.icon} />
       </IconButton>
     </box>
