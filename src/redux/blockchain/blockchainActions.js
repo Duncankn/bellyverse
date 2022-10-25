@@ -1,33 +1,41 @@
 // constants
 import Web3EthContract from "web3-eth-contract";
 import Web3 from "web3";
+
 // log
 import { fetchData } from "../data/dataActions";
 
+const handleMobileConnect = () => {
+  window.open(
+    "https://metamask.app.link/dapp/bellyverse.onrender.com/",
+    "_blank"
+  );
+};
+
 const connectRequest = () => {
   return {
-    type: "CONNECTION_REQUEST"
+    type: "CONNECTION_REQUEST",
   };
 };
 
 const connectSuccess = (payload) => {
   return {
     type: "CONNECTION_SUCCESS",
-    payload: payload
+    payload: payload,
   };
 };
 
 const connectFailed = (payload) => {
   return {
     type: "CONNECTION_FAILED",
-    payload: payload
+    payload: payload,
   };
 };
 
 const updateAccountRequest = (payload) => {
   return {
     type: "UPDATE_ACCOUNT",
-    payload: payload
+    payload: payload,
   };
 };
 
@@ -37,15 +45,15 @@ export const connect = () => {
     const abiResponse = await fetch("/config/abi.json", {
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json"
-      }
+        Accept: "application/json",
+      },
     });
     const abi = await abiResponse.json();
     const configResponse = await fetch("/config/config.json", {
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json"
-      }
+        Accept: "application/json",
+      },
     });
     const CONFIG = await configResponse.json();
     const { ethereum } = window;
@@ -56,10 +64,10 @@ export const connect = () => {
 
       try {
         const accounts = await ethereum.request({
-          method: "eth_requestAccounts"
+          method: "eth_requestAccounts",
         });
         const networkId = await ethereum.request({
-          method: "net_version"
+          method: "net_version",
         });
         if (networkId == CONFIG.NETWORK.ID) {
           const SmartContractObj = new Web3EthContract(
@@ -70,7 +78,7 @@ export const connect = () => {
             connectSuccess({
               account: accounts[0],
               smartContract: SmartContractObj,
-              web3: web3
+              web3: web3,
             })
           );
           // Add listeners start
@@ -86,14 +94,14 @@ export const connect = () => {
           try {
             await web3.currentProvider.request({
               method: "wallet_switchEthereumChain",
-              params: [{ chainId: Web3.utils.toHex(CONFIG.NETWORK.ID) }]
+              params: [{ chainId: Web3.utils.toHex(CONFIG.NETWORK.ID) }],
             });
 
             const accounts = await ethereum.request({
-              method: "eth_requestAccounts"
+              method: "eth_requestAccounts",
             });
             const networkId = await ethereum.request({
-              method: "net_version"
+              method: "net_version",
             });
             if (networkId == CONFIG.NETWORK.ID) {
               const SmartContractObj = new Web3EthContract(
@@ -104,7 +112,7 @@ export const connect = () => {
                 connectSuccess({
                   account: accounts[0],
                   smartContract: SmartContractObj,
-                  web3: web3
+                  web3: web3,
                 })
               );
             }
@@ -123,20 +131,20 @@ export const connect = () => {
                       nativeCurrency: {
                         name: CONFIG.NETWORK.SYMBOL,
                         decimals: 18,
-                        symbol: CONFIG.NETWORK.SYMBOL
+                        symbol: CONFIG.NETWORK.SYMBOL,
                       },
                       blockExplorerUrls: [CONFIG.SCAN_LINK],
                       iconUrls: [
-                        "https://polygonscan.com/images/svg/brands/polygon.svg"
-                      ]
-                    }
-                  ]
+                        "https://polygonscan.com/images/svg/brands/polygon.svg",
+                      ],
+                    },
+                  ],
                 });
                 const accounts = await ethereum.request({
-                  method: "eth_requestAccounts"
+                  method: "eth_requestAccounts",
                 });
                 const networkId = await ethereum.request({
-                  method: "net_version"
+                  method: "net_version",
                 });
                 if (networkId == CONFIG.NETWORK.ID) {
                   const SmartContractObj = new Web3EthContract(
@@ -147,7 +155,7 @@ export const connect = () => {
                     connectSuccess({
                       account: accounts[0],
                       smartContract: SmartContractObj,
-                      web3: web3
+                      web3: web3,
                     })
                   );
                 }
@@ -159,9 +167,11 @@ export const connect = () => {
         }
       } catch (err) {
         dispatch(connectFailed("Something went wrong."));
+        window.location.replace("dapp://bellyverse.onrender.com/");
       }
     } else {
       dispatch(connectFailed("Install Metamask."));
+      window.location.replace("dapp://bellyverse.onrender.com/");
     }
   };
 };
