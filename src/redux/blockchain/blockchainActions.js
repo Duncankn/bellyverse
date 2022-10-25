@@ -5,13 +5,6 @@ import Web3 from "web3";
 // log
 import { fetchData } from "../data/dataActions";
 
-const handleMobileConnect = () => {
-  window.open(
-    "https://metamask.app.link/dapp/bellyverse.onrender.com/",
-    "_blank"
-  );
-};
-
 const connectRequest = () => {
   return {
     type: "CONNECTION_REQUEST",
