@@ -54,15 +54,18 @@ const useStyles = makeStyles((theme) => ({
     background: "black",
   },
   button: {
-    height: "46px",
+    height: "40px",
+    width: "160px",
     fontSize: "16px",
-    color: "wheat",
+    color: "#FB85CC",
     background: "black",
-    borderColor: "wheat",
-    borderRadius: "23px",
+    borderColor: "#FB85CC",
+    borderRadius: "20px",
+    border: "3px solid",
     margin: "2px",
     padding: "2px",
     verticalAlign: "center",
+    text: "10px",
   },
   accInfo: {
     display: "flex",
@@ -130,7 +133,7 @@ export default function Navbar() {
   const classes = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const isDesktop = useMediaQuery(theme.breakpoints.up("sm"));
+  //const isDesktop = useMediaQuery(theme.breakpoints.up("sm"));
 
   return (
     <AppBar position="static" className={classes.appBar}>

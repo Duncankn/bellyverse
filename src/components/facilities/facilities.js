@@ -1,4 +1,4 @@
-const maxWidth = window.innerWidth * 0.99;
+//const maxWidth = window.innerWidth * 0.99;
 
 export default function Facilities() {
   const market = {

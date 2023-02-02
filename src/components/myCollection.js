@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Switch from "react-input-switch";
+import { useSelector } from "react-redux";
+//import Switch from "react-input-switch";
 import { ToggleButton, ToggleButtonGroup } from "@mui/material";
-import Card from "./card/card";
+//import Card from "./card/card";
 import Tile from "./card/imageTile";
 
 const myCollection = () => {
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
   const data = useSelector((state) => state.data);
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",

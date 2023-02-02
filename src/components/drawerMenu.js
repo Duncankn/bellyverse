@@ -7,7 +7,6 @@ import {
   ListItemText,
   ListItemIcon,
   makeStyles,
-  Button,
   Box,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -16,8 +15,7 @@ import Divider from "@mui/material/Divider";
 
 import { Link } from "react-router-dom";
 
-const truncate = (input, len) =>
-  input.length > len ? `${input.substring(0, len)}...` : input;
+//const truncate = (input, len) => input.length > len ? `${input.substring(0, len)}...` : input;
 
 const useStyles = makeStyles(() => ({
   paper: {

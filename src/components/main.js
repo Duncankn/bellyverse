@@ -300,7 +300,8 @@ export default function Main() {
       setNpc1Options({
         image: image,
       });
-      npc1Ref.current.start();
+      if (npc1Direction.current != null)
+        npc1Ref.current.start();
     };
   }, [npc1Direction.state]);
 
@@ -375,7 +376,8 @@ export default function Main() {
     image.onload = () => {
       // set image only when it is loaded
       setNpc2Options({ image: image });
-      npc2Ref.current.start();
+      if (npc2Direction.current != null)
+        npc2Ref.current.start();
     };
   }, [npc2Direction.state]);
 
@@ -452,7 +454,8 @@ export default function Main() {
       setNpc3Options({
         image: image,
       });
-      npc3Ref.current.start();
+      if (npc3Direction.current != null)
+        npc3Ref.current.start();
     };
   }, [npc3Direction.state]);
 
@@ -525,7 +528,8 @@ export default function Main() {
     image.onload = () => {
       // set image only when it is loaded
       setNpc4Options({ image: image });
-      npc4Ref.current.start();
+      if (npc4Direction.current != null)
+        npc4Ref.current.start();
     };
   }, [npc4Direction.state]);
 
@@ -598,7 +602,8 @@ export default function Main() {
     image.onload = () => {
       // set image only when it is loaded
       setNpc5Options({ image: image });
-      npc5Ref.current.start();
+      if (npc5Ref.current != null)
+        npc5Ref.current.start();
     };
   }, [npc5Direction.state]);
 
@@ -671,7 +676,8 @@ export default function Main() {
     image.onload = () => {
       // set image only when it is loaded
       setNpc6Options({ image: image });
-      npc6Ref.current.start();
+      if (npc6Ref.current != null)
+        npc6Ref.current.start();
     };
   }, [npc6Direction.state]);
 
@@ -744,7 +750,8 @@ export default function Main() {
     image.onload = () => {
       // set image only when it is loaded
       setNpc7Options({ image: image });
-      npc7Ref.current.start();
+      if (npc7Ref.current != null)
+        npc7Ref.current.start();
     };
   }, [npc7Direction.state]);
 
@@ -817,7 +824,8 @@ export default function Main() {
     image.onload = () => {
       // set image only when it is loaded
       setNpc8Options({ image: image });
-      npc8Ref.current.start();
+      if (npc8Direction.current != null)
+        npc8Ref.current.start();
     };
   }, [npc8Direction.state]);
 
@@ -890,7 +898,8 @@ export default function Main() {
     image.onload = () => {
       // set image only when it is loaded
       setNpc9Options({ image: image });
-      npc9Ref.current.start();
+      if (npc9Ref.current != null)
+        npc9Ref.current.start();
     };
   }, [npc9Direction.state]);
 
@@ -963,7 +972,8 @@ export default function Main() {
     image.onload = () => {
       // set image only when it is loaded
       setNpc10Options({ image: image });
-      npc10Ref.current.start();
+      if (npc10Ref.current != null)
+        npc10Ref.current.start();
     };
   }, [npc10Direction.state]);
 
@@ -1036,7 +1046,8 @@ export default function Main() {
     image.onload = () => {
       // set image only when it is loaded
       setNpc11Options({ image: image });
-      npc11Ref.current.start();
+      if (npc11Direction.current != null)
+        npc11Ref.current.start();
     };
   }, [npc11Direction.state]);
 
@@ -1111,7 +1122,8 @@ export default function Main() {
     image.onload = () => {
       // set image only when it is loaded
       setNpc12Options({ image: image });
-      npc12Ref.current.start();
+      if (npc12Ref.current != null)
+        npc12Ref.current.start();
     };
   }, [npc12Direction.state]);
 
@@ -1184,7 +1196,8 @@ export default function Main() {
     image.onload = () => {
       // set image only when it is loaded
       setArrowOptions({ image: image });
-      arrowRef.current.start();
+      if (arrowRef.current != null)
+        arrowRef.current.start();
     };
   }, [arrowDirection.state]);
 
@@ -1195,7 +1208,8 @@ export default function Main() {
     image.onload = () => {
       // set image only when it is loaded
       setClothingOptions({ image: image });
-      clothingRef.current.start();
+      if (clothingRef.current != null)
+        clothingRef.current.start();
     };
   }, [clothingDirection.state]);
 
@@ -1206,7 +1220,8 @@ export default function Main() {
     image.onload = () => {
       // set image only when it is loaded
       setRoboOptions({ image: image });
-      roboRef.current.start();
+      if (roboRef.current != null)
+        roboRef.current.start();
     };
   }, [roboDirection.state]);
 
@@ -1217,7 +1232,8 @@ export default function Main() {
     image.onload = () => {
       // set image only when it is loaded
       setRechargingOptions({ image: image });
-      rechargingRef.current.start();
+      if (rechargingRef.current != null)
+        rechargingRef.current.start();
     };
   }, [rechargingDirection.state]);
 
@@ -1228,7 +1244,8 @@ export default function Main() {
     image.onload = () => {
       // set image only when it is loaded
       setDiscoOptions({ image: image });
-      discoRef.current.start();
+      if (discoRef.current != null)
+        discoRef.current.start();
     };
   }, [disco.state]);
 
@@ -1239,7 +1256,8 @@ export default function Main() {
     image.onload = () => {
       // set image only when it is loaded
       setTeleporterOptions({ image: image });
-      teleporterRef.current.start();
+      if (teleporterRef.current != null)
+        teleporterRef.current.start();
     };
   }, [teleporter.state]);
 
@@ -1250,7 +1268,8 @@ export default function Main() {
     image.onload = () => {
       // set image only when it is loaded
       setVoteSignOptions({ image: image });
-      voteSignRef.current.start();
+      if (voteSignRef.current != null)
+        voteSignRef.current.start();
     };
   }, [voteSign.state]);
 
@@ -1261,7 +1280,8 @@ export default function Main() {
     image.onload = () => {
       // set image only when it is loaded
       setRoboPetsSignOptions({ image: image });
-      roboPetsSignRef.current.start();
+      if (roboPetsSignRef.current != null)
+        roboPetsSignRef.current.start();
     };
   }, [roboPetsSign.state]);
 
@@ -1272,7 +1292,8 @@ export default function Main() {
     image.onload = () => {
       // set image only when it is loaded
       setBellyPoolOptions({ image: image });
-      bellyPoolRef.current.start();
+      if (bellyPoolRef.current != null)
+        bellyPoolRef.current.start();
     };
   }, [bellyPool.state]);
 
@@ -1283,7 +1304,8 @@ export default function Main() {
     image.onload = () => {
       // set image only when it is loaded
       setScanner1Options({ image: image });
-      scanner1Ref.current.start();
+      if (scanner1Ref.current != null)
+        scanner1Ref.current.start();
     };
   }, [scanner1.state]);
 
@@ -1294,7 +1316,8 @@ export default function Main() {
     image.onload = () => {
       // set image only when it is loaded
       setScanner2Options({ image: image });
-      scanner2Ref.current.start();
+      if (scanner2Ref.current != null)
+        scanner2Ref.current.start();
     };
   }, [scanner2.state]);
 
@@ -1305,7 +1328,8 @@ export default function Main() {
     image.onload = () => {
       // set image only when it is loaded
       setPetOwnersOptions({ image: image });
-      petOwnersRef.current.start();
+      if (petOwnersRef.current != null)
+        petOwnersRef.current.start();
     };
   }, [petOwners.state]);
 
