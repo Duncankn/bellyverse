@@ -100,6 +100,8 @@ export default function Navbar() {
     SHOW_BACKGROUND: false,
   });
 
+  const galleryLink = "https://paintswap.finance/marketplace/fantom/user/"+ blockchain.account+"/nfts"
+
   const getData = () => {
     if (blockchain.account !== "" && blockchain.smartContract !== null) {
       dispatch(fetchData(blockchain.account));
@@ -172,7 +174,7 @@ export default function Navbar() {
             <Link to="/" className={classes.link}>
               Spaceship
             </Link>
-            <Link to="/gallery" className={classes.link}>
+            <Link to={{pathname:"//paintswap.finance/marketplace/fantom/user/"+blockchain.account+"/nfts"}} target="_blank" className={classes.link}>
               Gallery
             </Link>
 

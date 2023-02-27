@@ -1372,7 +1372,7 @@ export default function Main() {
   };
 
   const handleMarketClick = (e) => {
-    window.open("https://testnets.opensea.io/collection/astrobelly", "_blank");
+    window.open("https://paintswap.finance/marketplace/fantom/collections/bellyverse", "_blank");
   };
 
   const handleWalletEnter = (e) => {
@@ -1402,8 +1402,9 @@ export default function Main() {
     setTooltipVisible(false);
   };
 
+  const galleryLink = "https://paintswap.finance/marketplace/fantom/user/"+ blockchain.account+"/nfts"
   const handleGalleryClick = (e) => {
-    navigate("/gallery");
+    window.open(galleryLink, "_blank");
   };
 
   const handleLabEnter = (e) => {
@@ -2047,12 +2048,12 @@ export default function Main() {
           onClick={handleBgmClick}
           onTap={handleBgmClick}
         />
-        <Text
+        {/*<Text
           text={text}
           fontFamily="Press Start 2P"
           fontSize="20"
           fill="red"
-        />
+        />*/}
         <Rect
           id="Market"
           width={aMarket.width}
