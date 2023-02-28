@@ -2236,7 +2236,7 @@ export default function Main() {
             <Text
               x={aMintText.x - 60 * scale}
               y={aMintText.y + 80 * scale}
-              text="MATIC]"
+              text="FTM]"
               fontSize={24}
               fontFamily="Press Start 2P"
               fill="#D0DA91"

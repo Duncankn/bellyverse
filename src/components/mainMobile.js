@@ -31,7 +31,6 @@ const useStyles = makeStyles((theme) => ({
         margin: "20px",
         padding: "2px",
         verticalAlign: "center",
-        text: "10px",
     },
     buttonMint: {
         height: "40px",
@@ -45,19 +44,25 @@ const useStyles = makeStyles((theme) => ({
         margin: "20px",
         padding: "2px",
         verticalAlign: "center",
-        text: "10px",
     },
     buttonMintTube: {
-        height: "80px",
+        height: "40px",
         width: "160px",
-        fontSize: "28px",
+        fontSize: "26px",
         fontFamily: '"Press Start 2P"',
         color: "#D0DA91",
         borderRadius: "20px",
-        marginLeft: "50px",
+        marginTop: "10px",
+        marginLeft: "200px",
         padding: "20px",
         verticalAlign: "center",
-        text: "10px",
+    },
+    TextMintCost: {
+        fontSize: "16px",
+        fontFamily: '"Press Start 2P"',
+        color: "white",
+        borderRadius: "20px",
+        marginLeft: "330px",
     },
     bellyTube: {
         backgroundImage: "url('/config/images/bellyTube.png')",
@@ -74,6 +79,7 @@ const useStyles = makeStyles((theme) => ({
         color: "#D0DA91",
         textAlign: "center",
         textDecoration: "none",
+        fontSize: "28px",
         fontFamily: '"Press Start 2P"',
         paddingTop: "40px",
     },
@@ -82,23 +88,25 @@ const useStyles = makeStyles((theme) => ({
         textAlign: "center",
         textDecoration: "none",
         fontFamily: '"Press Start 2P"',
-        paddingTop: "70px",
+        marginTop: "70px",
     },
     bellyTubeMinus: {
         color: "#D0DA91",
         textAlign: "center",
         textDecoration: "none",
+        fontSize: "40px",
         fontFamily: '"Press Start 2P"',
-        paddingTop: "70px",
-        paddingRight: "100px",
+        marginTop: "50px",
+        marginRight: "20px"
     },
     bellyTubePlus: {
         color: "#D0DA91",
         textAlign: "center",
         textDecoration: "none",
+        fontSize: "40px",
         fontFamily: '"Press Start 2P"',
-        paddingTop: "70px",
-        paddingLeft: "100px",
+        marginTop: "50px",
+        marginLeft: "20px"
     },
     mobileFont: {
         color: "white",
@@ -126,6 +134,9 @@ const mainMobile = () => {
     const [claimingNft, setClaimingNft] = useState(false);
     const [feedback, setFeedback] = useState(`Click buy to mint your NFT.`);
     const [isWalletConnected, setWalletIsConnected] = useState(false);
+    const [isMintMinusHover, setMintMinusIsHover] = useState(false);
+    const [isMintPlusHover, setMintPlusIsHover] = useState(false);
+    const [isMintButtonHover, setMintButtonIsHover] = useState(false);
     const [CONFIG, SET_CONFIG] = useState({
         CONTRACT_ADDRESS: "",
         SCAN_LINK: "",
@@ -206,43 +217,61 @@ const mainMobile = () => {
         }
     };
 
+    const handleMinusClick = (e) => {
+        if (mintAmount>1) {
+            setMintAmount(mintAmount-1);
+        }
+    };
+
+    const handlePlusClick = (e) => {
+        if (mintAmount<9) {
+            setMintAmount(mintAmount+1);
+        }
+    };
     const handleMintClick = (e) => {
-        setMintAmount(1);
+        setMintAmount(mintAmount);
         claimNFTs();
         getData();
     };
 
+    const handleMarketClick = (e) => {
+        window.open("https://paintswap.finance/marketplace/fantom/collections/bellyverse", "_blank");
+      };
+
     return (
         <Box>
-            <box m="auto">
+            <Box m="auto">
                 <img className={classes.mobileImage} src={"/config/images/bellyGold.png"} alt="bellyGold" />
-            </box>
+            </Box>
             
             <h1 className={classes.mobileFont}>BellyVerse</h1>
             <p className={classes.mobileFont}>{description}</p>
             <Box className={classes.boxButton}>
-                <Button className={classes.buttonOpensea} variant="outlined">Opensea</Button>
-                <Button className={classes.buttonMint} variant="outlined">Mint</Button>
+                <Button className={classes.buttonOpensea} onClick={handleMarketClick} variant="outlined">PaintSwap</Button>
             </Box>
             
             <Box className={classes.bellyTube}>
                 <h1 className={classes.bellyTubeTitle}>Belly Labs</h1>
                 <Grid item xs={12}>
-                    <Grid container justifyContent="center" spacing={12}>
+                    <Grid container justifyContent="center" spacing={9}>
                         <Grid item>
-                            <h1 className={classes.bellyTubeMinus}>-</h1>
+                            <Button className={classes.bellyTubeMinus} onClick={handleMinusClick}>-</Button>
                         </Grid>
                         <Grid item>
-                            <h1 className={classes.bellyTubeMintAmount}>1</h1>
+                            <h1 className={classes.bellyTubeMintAmount}>{mintAmount}</h1>
                         </Grid>
                         <Grid item>
-                            <h1 className={classes.bellyTubePlus}>+</h1>
+                            <Button className={classes.bellyTubePlus} onClick={handlePlusClick}>+</Button>
                         </Grid>
                     </Grid>
                 </Grid>
                 <Box className={classes.boxButton}>
-                    <p>10 Matic</p>
-                    <Button className={classes.buttonMintTube} onClick={handleMintClick} >Mint</Button>
+                    <Button className={classes.buttonMintTube} onClick={handleMintClick}>
+                            Mint
+                    </Button>
+                </Box>
+                <Box className={classes.TextMintCost}>
+                    <p>{mintAmount*CONFIG.DISPLAY_COST} FTM</p>
                 </Box>
             </Box>
             <Box>
