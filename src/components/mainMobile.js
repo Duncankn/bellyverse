@@ -84,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
         textAlign: "center",
         textDecoration: "none",
         fontFamily: '"Press Start 2P"',
-        marginTop: "50px",
+        marginTop: "30px",
     },
     bellyTubeMinus: {
         color: "#D0DA91",
@@ -92,7 +92,7 @@ const useStyles = makeStyles((theme) => ({
         textDecoration: "none",
         fontSize: "30px",
         fontFamily: '"Press Start 2P"',
-        marginTop: "30px",
+        marginTop: "20px",
         //marginRight: "5px"
     },
     bellyTubePlus: {
@@ -101,7 +101,7 @@ const useStyles = makeStyles((theme) => ({
         textDecoration: "none",
         fontSize: "30px",
         fontFamily: '"Press Start 2P"',
-        marginTop: "30px",
+        marginTop: "20px",
         //marginLeft: "5px"
     },
     mobileFont: {
