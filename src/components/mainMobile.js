@@ -46,23 +46,19 @@ const useStyles = makeStyles((theme) => ({
         verticalAlign: "center",
     },
     buttonMintTube: {
-        height: "40px",
-        width: "160px",
-        fontSize: "26px",
+        fontSize: "20px",
         fontFamily: '"Press Start 2P"',
         color: "#D0DA91",
-        borderRadius: "20px",
-        marginTop: "10px",
-        marginLeft: "200px",
+        marginLeft: "60px",
         padding: "20px",
         verticalAlign: "center",
     },
     TextMintCost: {
-        fontSize: "16px",
+        fontSize: "12px",
         fontFamily: '"Press Start 2P"',
         color: "white",
         borderRadius: "20px",
-        marginLeft: "330px",
+        marginLeft: "180px",
     },
     bellyTube: {
         backgroundImage: "url('/config/images/bellyTube.png')",
@@ -79,34 +75,34 @@ const useStyles = makeStyles((theme) => ({
         color: "#D0DA91",
         textAlign: "center",
         textDecoration: "none",
-        fontSize: "28px",
+        fontSize: "24px",
         fontFamily: '"Press Start 2P"',
-        paddingTop: "40px",
+        paddingTop: "20px",
     },
     bellyTubeMintAmount: {
         color: "#D0DA91",
         textAlign: "center",
         textDecoration: "none",
         fontFamily: '"Press Start 2P"',
-        marginTop: "70px",
+        marginTop: "50px",
     },
     bellyTubeMinus: {
         color: "#D0DA91",
         textAlign: "center",
         textDecoration: "none",
-        fontSize: "40px",
+        fontSize: "30px",
         fontFamily: '"Press Start 2P"',
-        marginTop: "50px",
-        marginRight: "20px"
+        marginTop: "30px",
+        //marginRight: "5px"
     },
     bellyTubePlus: {
         color: "#D0DA91",
         textAlign: "center",
         textDecoration: "none",
-        fontSize: "40px",
+        fontSize: "30px",
         fontFamily: '"Press Start 2P"',
-        marginTop: "50px",
-        marginLeft: "20px"
+        marginTop: "30px",
+        //marginLeft: "5px"
     },
     mobileFont: {
         color: "white",
@@ -131,12 +127,12 @@ const useStyles = makeStyles((theme) => ({
 const mainMobile = () => {
     const classes = useStyles();
     const [mintAmount, setMintAmount] = useState(1);
+    // eslint-disable-next-line
     const [claimingNft, setClaimingNft] = useState(false);
+    // eslint-disable-next-line
     const [feedback, setFeedback] = useState(`Click buy to mint your NFT.`);
+    // eslint-disable-next-line
     const [isWalletConnected, setWalletIsConnected] = useState(false);
-    const [isMintMinusHover, setMintMinusIsHover] = useState(false);
-    const [isMintPlusHover, setMintPlusIsHover] = useState(false);
-    const [isMintButtonHover, setMintButtonIsHover] = useState(false);
     const [CONFIG, SET_CONFIG] = useState({
         CONTRACT_ADDRESS: "",
         SCAN_LINK: "",
@@ -253,7 +249,7 @@ const mainMobile = () => {
             <Box className={classes.bellyTube}>
                 <h1 className={classes.bellyTubeTitle}>Belly Labs</h1>
                 <Grid item xs={12}>
-                    <Grid container justifyContent="center" spacing={9}>
+                    <Grid container justifyContent="center" spacing={6}>
                         <Grid item>
                             <Button className={classes.bellyTubeMinus} onClick={handleMinusClick}>-</Button>
                         </Grid>
@@ -269,8 +265,6 @@ const mainMobile = () => {
                     <Button className={classes.buttonMintTube} onClick={handleMintClick}>
                             Mint
                     </Button>
-                </Box>
-                <Box className={classes.TextMintCost}>
                     <p>{mintAmount*CONFIG.DISPLAY_COST} FTM</p>
                 </Box>
             </Box>

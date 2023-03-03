@@ -62,7 +62,7 @@ export const connect = () => {
         const networkId = await ethereum.request({
           method: "net_version",
         });
-        if (networkId == CONFIG.NETWORK.ID) {
+        if (networkId === CONFIG.NETWORK.ID) {
           const SmartContractObj = new Web3EthContract(
             abi,
             CONFIG.CONTRACT_ADDRESS
@@ -96,7 +96,7 @@ export const connect = () => {
             const networkId = await ethereum.request({
               method: "net_version",
             });
-            if (networkId == CONFIG.NETWORK.ID) {
+            if (networkId === CONFIG.NETWORK.ID) {
               const SmartContractObj = new Web3EthContract(
                 abi,
                 CONFIG.CONTRACT_ADDRESS
@@ -139,7 +139,7 @@ export const connect = () => {
                 const networkId = await ethereum.request({
                   method: "net_version",
                 });
-                if (networkId == CONFIG.NETWORK.ID) {
+                if (networkId === CONFIG.NETWORK.ID) {
                   const SmartContractObj = new Web3EthContract(
                     abi,
                     CONFIG.CONTRACT_ADDRESS
@@ -160,11 +160,11 @@ export const connect = () => {
         }
       } catch (err) {
         dispatch(connectFailed("Something went wrong."));
-        window.location.replace("dapp://bellyverse.onrender.com/");
+        window.location.replace("dapp://raspy-sea-0071.on.fleek.co/");
       }
     } else {
       dispatch(connectFailed("Install Metamask."));
-      window.location.replace("dapp://bellyverse.onrender.com/");
+      window.location.replace("dapp://raspy-sea-0071.on.fleek.co/");
     }
   };
 };

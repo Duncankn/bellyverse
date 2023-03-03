@@ -100,7 +100,7 @@ export default function Navbar() {
     SHOW_BACKGROUND: false,
   });
 
-  const galleryLink = "https://paintswap.finance/marketplace/fantom/user/"+ blockchain.account+"/nfts"
+  //const galleryLink = "https://paintswap.finance/marketplace/fantom/user/"+ blockchain.account+"/nfts"
 
   const getData = () => {
     if (blockchain.account !== "" && blockchain.smartContract !== null) {

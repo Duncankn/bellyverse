@@ -18,7 +18,6 @@ import useAudio from "./useAudio";
 import { connect } from "../redux/blockchain/blockchainActions";
 import { fetchData } from "../redux/data/dataActions";
 import facilities from "./facilities/facilities";
-import { useNavigate } from "react-router-dom";
 
 //spaceship
 //================================================
@@ -43,19 +42,27 @@ const Spaceship = () => {
 
 export default function Main() {
   const dialogRef = React.useRef();
-  const logoRef = React.useRef();
+  //const logoRef = React.useRef();
   const dispatch = useDispatch();
   const blockchain = useSelector((state) => state.blockchain);
+  // eslint-disable-next-line 
   const [isWalletConnected, setWalletIsConnected] = useState(false);
-  const data = useSelector((state) => state.data);
+  //const data = useSelector((state) => state.data);
+
+  // eslint-disable-next-line 
   const [claimingNft, setClaimingNft] = useState(false);
+
+  // eslint-disable-next-line 
   const [feedback, setFeedback] = useState(`Click buy to mint your NFT.`);
   const [mintAmount, setMintAmount] = useState(1);
   const [mintDialog, setMintDialog] = useState(false);
+
+  // eslint-disable-next-line 
   const [dialogAnimeStarted, setDialogAnimeStarted] = useState(false);
+  // eslint-disable-next-line 
   const [dialogAnimeEnded, setDialogAnimeEnded] = useState(false);
   const [bellyTube] = useImage("/config/images/bellyTube.png");
-  const [logo] = useImage("/config/images/polygon.svg");
+  //const [logo] = useImage("/config/images/polygon.svg");
   const [music] = useImage("/config/images/music-icon.png");
   const [noMusic] = useImage("/config/images/music-off-icon.png");
   const bgmUrl = "/config/14 Hope.mp3";
@@ -273,6 +280,8 @@ export default function Main() {
   const [npc10Direction, setNpc10Direction] = useState({ state: "walkLeft" });
   const [npc11Direction, setNpc11Direction] = useState({ state: "walkDown" });
   const [npc12Direction, setNpc12Direction] = useState({ state: "walkLeft" });
+
+  // eslint-disable-next-line 
   const [arrowDirection, setArrowDirection] = useState({ state: "arrow" });
   const [clothingDirection] = useState({ state: "clothing" });
   const [roboDirection] = useState({ state: "robomart" });
@@ -1348,9 +1357,8 @@ export default function Main() {
   const [isMintMinusHover, setMintMinusIsHover] = React.useState(false);
   const [isMintPlusHover, setMintPlusIsHover] = React.useState(false);
   const [isMintCrossHover, setMintCrossIsHover] = React.useState(false);
+  // eslint-disable-next-line 
   const [isBgmHover, setBgmIsHover] = React.useState(false);
-
-  const navigate = useNavigate();
 
   const handleMouseMove = (e) => {
     var stage = e.currentTarget;
@@ -1516,6 +1524,7 @@ export default function Main() {
 
   const absX = (state.cursor.x * width) / maxWidth;
   const absY = (state.cursor.y * width) / maxWidth;
+  // eslint-disable-next-line
   const text = `X: ${absX}, Y: ${absY}`;
 
   const market = facilities().market;
@@ -1695,24 +1704,6 @@ export default function Main() {
   function connectClick() {
     dispatch(connect());
     getData();
-  }
-
-  {
-    /*useEffect(() => {
-    if (!isWalletConnected) {
-      return;
-    }
-    var anim = new Konva.Animation((frame) => {
-      const centerY = (50 * maxWidth) / width;
-      const period = 3000;
-      const offset = (20 * maxWidth) / width;
-      logoRef.current.y(
-        centerY + offset * Math.sin((frame.time * 2 * Math.PI) / period)
-      );
-    }, logoRef.current.getLayer());
-
-    anim.start();
-  }, [isWalletConnected]);*/
   }
 
   return (
