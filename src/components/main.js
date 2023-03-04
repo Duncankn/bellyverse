@@ -232,17 +232,17 @@ export default function Main() {
   const scanner2position = { x: 250, y: 234 };
   const petOwnersposition = { x: 1000, y: 900 };
 
-  const npc1Ref = useRef();
-  const npc2Ref = useRef();
-  const npc3Ref = useRef();
-  const npc4Ref = useRef();
+  const npc1Ref = useRef(null);
+  const npc2Ref = useRef(null);
+  const npc3Ref = useRef(null);
+  const npc4Ref = useRef(null);
   const npc5Ref = useRef();
   const npc6Ref = useRef();
   const npc7Ref = useRef();
-  const npc8Ref = useRef();
+  const npc8Ref = useRef(null);
   const npc9Ref = useRef();
   const npc10Ref = useRef();
-  const npc11Ref = useRef();
+  const npc11Ref = useRef(null);
   const npc12Ref = useRef();
   const arrowRef = useRef();
   const clothingRef = useRef();
@@ -298,7 +298,7 @@ export default function Main() {
       setNpc1Options({
         image: image,
       });
-      if(npc1Direction.current != null)
+      if(npc1Ref.current != null)
         npc1Ref.current.start();
     };
   }, [npc1Direction.state]);
@@ -374,7 +374,7 @@ export default function Main() {
     image.onload = () => {
       // set image only when it is loaded
       setNpc2Options({ image: image });
-      if (npc2Direction.current != null)
+      if (npc2Ref.current != null)
         npc2Ref.current.start();
     };
   }, [npc2Direction.state]);
@@ -452,7 +452,7 @@ export default function Main() {
       setNpc3Options({
         image: image,
       });
-      if (npc3Direction.current != null)
+      if (npc3Ref.current != null)
         npc3Ref.current.start();
     };
   }, [npc3Direction.state]);
@@ -526,7 +526,7 @@ export default function Main() {
     image.onload = () => {
       // set image only when it is loaded
       setNpc4Options({ image: image });
-      if (npc4Direction.current != null)
+      if (npc4Ref.current != null)
         npc4Ref.current.start();
     };
   }, [npc4Direction.state]);
@@ -822,7 +822,7 @@ export default function Main() {
     image.onload = () => {
       // set image only when it is loaded
       setNpc8Options({ image: image });
-      if (npc8Direction.current != null)
+      if (npc8Ref.current != null)
         npc8Ref.current.start();
     };
   }, [npc8Direction.state]);
@@ -1044,7 +1044,7 @@ export default function Main() {
     image.onload = () => {
       // set image only when it is loaded
       setNpc11Options({ image: image });
-      if (npc11Direction.current != null)
+      if (npc11Ref.current != null)
         npc11Ref.current.start();
     };
   }, [npc11Direction.state]);
