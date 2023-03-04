@@ -47,7 +47,7 @@ export default function Main() {
   const blockchain = useSelector((state) => state.blockchain);
   // eslint-disable-next-line 
   const [isWalletConnected, setWalletIsConnected] = useState(false);
-  //const data = useSelector((state) => state.data);
+  const data = useSelector((state) => state.data);
 
   // eslint-disable-next-line 
   const [claimingNft, setClaimingNft] = useState(false);
@@ -106,19 +106,11 @@ export default function Main() {
     idleDown: [0, 0, 96, 96],
     idleUp: [0, 96, 96, 96],
     walkLeft: [0, 0, 96, 96, 96, 0, 96, 96, 194, 0, 96, 96, 290, 0, 96, 96],
-    walkRight: [
-      0, 96, 96, 96, 96, 96, 96, 96, 194, 96, 96, 96, 290, 96, 96, 96,
-    ],
+    walkRight: [0, 96, 96, 96, 96, 96, 96, 96, 194, 96, 96, 96, 290, 96, 96, 96,],
     idleLeft: [290, 0, 96, 96],
     idleRight: [0, 96, 96, 96],
-    arrow: [
-      0, 0, 48, 48, 48, 0, 48, 48, 96, 0, 48, 48, 144, 0, 48, 48, 192, 0, 48,
-      48,
-    ],
-    clothing: [
-      0, 0, 96, 96, 96, 0, 96, 96, 192, 0, 96, 96, 288, 0, 96, 96, 384, 0, 96,
-      96, 480, 0, 96, 96, 576, 0, 96, 96,
-    ],
+    arrow: [0, 0, 48, 48, 48, 0, 48, 48, 96, 0, 48, 48, 144, 0, 48, 48, 192, 0, 48, 48],
+    clothing: [0, 0, 96, 96, 96, 0, 96, 96, 192, 0, 96, 96, 288, 0, 96, 96, 384, 0, 96, 96, 480, 0, 96, 96, 576, 0, 96, 96],
     robomart: [
       0, 0, 96, 96, 96, 0, 96, 96, 192, 0, 96, 96, 288, 0, 96, 96, 384, 0, 96,
       96, 480, 0, 96, 96, 576, 0, 96, 96, 672, 0, 96, 96, 768, 0, 96, 96, 864,
@@ -138,10 +130,7 @@ export default function Main() {
       192, 3072, 0, 192, 192, 3264, 0, 192, 192,
     ],
     voteSign: [
-      0, // frame 1
-      0,
-      144,
-      96,
+      0, 0, 144, 96, // frame 1
       144, // frame 2
       0,
       144,
@@ -309,7 +298,7 @@ export default function Main() {
       setNpc1Options({
         image: image,
       });
-      if (npc1Direction.current != null)
+      //if(npc1Direction.current != null)
         npc1Ref.current.start();
     };
   }, [npc1Direction.state]);
@@ -385,7 +374,7 @@ export default function Main() {
     image.onload = () => {
       // set image only when it is loaded
       setNpc2Options({ image: image });
-      if (npc2Direction.current != null)
+      //if (npc2Direction.current != null)
         npc2Ref.current.start();
     };
   }, [npc2Direction.state]);
@@ -463,7 +452,7 @@ export default function Main() {
       setNpc3Options({
         image: image,
       });
-      if (npc3Direction.current != null)
+      //if (npc3Direction.current != null)
         npc3Ref.current.start();
     };
   }, [npc3Direction.state]);
@@ -537,7 +526,7 @@ export default function Main() {
     image.onload = () => {
       // set image only when it is loaded
       setNpc4Options({ image: image });
-      if (npc4Direction.current != null)
+      //if (npc4Direction.current != null)
         npc4Ref.current.start();
     };
   }, [npc4Direction.state]);
@@ -833,7 +822,7 @@ export default function Main() {
     image.onload = () => {
       // set image only when it is loaded
       setNpc8Options({ image: image });
-      if (npc8Direction.current != null)
+      //if (npc8Direction.current != null)
         npc8Ref.current.start();
     };
   }, [npc8Direction.state]);
@@ -1055,7 +1044,7 @@ export default function Main() {
     image.onload = () => {
       // set image only when it is loaded
       setNpc11Options({ image: image });
-      if (npc11Direction.current != null)
+      //if (npc11Direction.current != null)
         npc11Ref.current.start();
     };
   }, [npc11Direction.state]);

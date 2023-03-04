@@ -96,7 +96,7 @@ export const connect = () => {
             const networkId = await ethereum.request({
               method: "net_version",
             });
-            if (networkId === CONFIG.NETWORK.ID) {
+            if (networkId == CONFIG.NETWORK.ID) {
               const SmartContractObj = new Web3EthContract(
                 abi,
                 CONFIG.CONTRACT_ADDRESS
@@ -111,7 +111,7 @@ export const connect = () => {
             }
           } catch (switchError) {
             // This error code indicates that the chain has not been added to MetaMask.
-            if (switchError.code === 4902) {
+            if (switchError.code == 4902) {
               //alert("add this chain id");
               try {
                 await web3.currentProvider.request({
@@ -139,7 +139,7 @@ export const connect = () => {
                 const networkId = await ethereum.request({
                   method: "net_version",
                 });
-                if (networkId === CONFIG.NETWORK.ID) {
+                if (networkId == CONFIG.NETWORK.ID) {
                   const SmartContractObj = new Web3EthContract(
                     abi,
                     CONFIG.CONTRACT_ADDRESS
