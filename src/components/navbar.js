@@ -165,7 +165,7 @@ export default function Navbar() {
             )}
             <DrawerMenu
               className={classes.hamburger}
-              address={truncate(blockchain.account, 7)}
+              //address={truncate(blockchain.account, 7)}
             />
           </box>
         )}
