@@ -1356,11 +1356,14 @@ export default function Main() {
     setState({
       cursor: stage.getPointerPosition(),
     });
+  };
+
+  const handleMosueClick = (e) => {
     if(!musicInit){
-      //play();
+      play();
       setMusicInit(true);
     }
-  };
+  }
 
   const handleMarketEnter = (e) => {
     setMarketIsHover(true);
@@ -1705,6 +1708,7 @@ export default function Main() {
       width={maxWidth}
       height={maxWidth * ratio}
       onMouseMove={handleMouseMove}
+      onClick={handleMosueClick}
     >
       <Layer>
         <Spaceship />
