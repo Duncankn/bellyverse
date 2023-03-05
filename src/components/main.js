@@ -1348,14 +1348,17 @@ export default function Main() {
   const [isMintCrossHover, setMintCrossIsHover] = React.useState(false);
   // eslint-disable-next-line 
   const [isBgmHover, setBgmIsHover] = React.useState(false);
+  const [musicInit, setMusicInit] = React.useState(false);
+
   const handleMouseMove = (e) => {
     var stage = e.currentTarget;
     stage = e.target.getStage();
     setState({
       cursor: stage.getPointerPosition(),
     });
-    if(!playing){
+    if(!musicInit){
       play();
+      setMusicInit(true);
     }
   };
 
