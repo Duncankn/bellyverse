@@ -1357,7 +1357,7 @@ export default function Main() {
       cursor: stage.getPointerPosition(),
     });
     if(!musicInit){
-      play();
+      //play();
       setMusicInit(true);
     }
   };
