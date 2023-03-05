@@ -95,7 +95,7 @@ export default function Main() {
   //======================================================================
   //BGM player
 
-  const [playing, toggle] = useAudio(bgmUrl);
+  const [playing, toggle, play] = useAudio(bgmUrl);
 
   //======================================================================
   //NPC Sprite
@@ -1332,7 +1332,7 @@ export default function Main() {
   }, [petOwners.state]);
 
   //==========================================================================
-
+  
   const [isTooltipVisible, setTooltipVisible] = React.useState(false);
   const [tooltipText, setTooltipText] = React.useState("");
 
@@ -1348,6 +1348,7 @@ export default function Main() {
   const [isMintCrossHover, setMintCrossIsHover] = React.useState(false);
   // eslint-disable-next-line 
   const [isBgmHover, setBgmIsHover] = React.useState(false);
+  const [isMusicInit, setMusicInit] =  React.useState(false)
 
   const handleMouseMove = (e) => {
     var stage = e.currentTarget;
@@ -1355,6 +1356,10 @@ export default function Main() {
     setState({
       cursor: stage.getPointerPosition(),
     });
+    if(!isMusicInit){
+      play();
+      setMusicInit(true);
+    }
   };
 
   const handleMarketEnter = (e) => {
