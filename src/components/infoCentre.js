@@ -67,6 +67,7 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: '"Press Start 2P"',
     },
     mobileImage: {
+        maxWidth: "100%",
         margin: "auto",
         display: "flex",
         justifyContent: "center",
