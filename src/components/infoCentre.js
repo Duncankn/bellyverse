@@ -5,6 +5,11 @@ import { fetchData } from "../redux/data/dataActions";
 import { connect } from "../redux/blockchain/blockchainActions";
 
 const description = "Somewhere in the outermost reaches of uncharted space, a crew of 10,000 junk food-fuelled, little space explorers scour the stars in search of the universe’s ultimate snack, and you can join them…";
+const greeting = "Welcome to";
+const greeting2 = " The BellyVerse";
+const article1 = "Become part the adventure by dropping into Belly Labs, where, for the price of 5 FTM, you can mint your very own pot-bellied space explorer. Each explorer is uniquelyengineered from a repository of mammalian, alien, and cyborg components, before being pumped full of hyper-calorific fast food, and finally kitted out in the snazziest of sci-fi fashion.";
+const article2 = "BellyVerse NFT holders will gain access to competitions and giveaways, as well as voting rights on future BellyVerse developments. Further along the journey, they will also receive more exclusive benefits including opportunities to participate in betatesting for future BellyVerse games. ";
+const article3 = "Once you have become comfortably acquainted with your tubby new companion, visit the BellyVerse exchange where you can discover your explorer’s stats, and trade your explorers with other BellyVerse enthusiasts on the open market. If you are more of a social Belly, make sure you drop by the Bar, where you can get in touch with other members of the crew and keep up with all the latest BellyVerse-related developments via our socials. Or, if you are looking for something a bit different, then why not head on down to the lower decks and show a bit of support to our partners at the BellyVerse merch store, and the Bandcamp Disco.";
 const roadmap2023 = "BellyVerse Arcade: Where players can win crypto by topping the leaderboard of some reskinned arcade classics.";
 const roadmap2024 = "BellyVerse The Game beta-testing."
 const descriptionBelly = "Aspiring indie game developer, miniature wargame enjoyer, and JRPG simp";
@@ -20,9 +25,9 @@ const useStyles = makeStyles((theme) => ({
         alignItems: "center",
     },
     buttonOpensea: {
-        height: "40px",
-        width: "160px",
-        fontSize: "16px",
+        height: "60px",
+        width: "240px",
+        fontSize: "24px",
         color: "#FB85CC",
         background: "black",
         borderColor: "#FB85CC",
@@ -32,83 +37,28 @@ const useStyles = makeStyles((theme) => ({
         padding: "2px",
         verticalAlign: "center",
     },
-    buttonMint: {
-        height: "40px",
-        width: "160px",
-        fontSize: "16px",
-        color: "White",
-        background: "#FB85CC",
-        borderColor: "#FB85CC",
-        borderRadius: "20px",
-        border: "3px solid",
-        margin: "20px",
-        padding: "2px",
-        verticalAlign: "center",
-    },
-    buttonMintTube: {
-        fontSize: "20px",
-        fontFamily: '"Press Start 2P"',
-        color: "#D0DA91",
-        marginLeft: "60px",
-        padding: "20px",
-        verticalAlign: "center",
-    },
-    TextMintCost: {
-        fontSize: "12px",
-        fontFamily: '"Press Start 2P"',
+    titleBelly: {
+        margin: "0 auto",
+        padding: "16px",
+        paddingTop: "32px",
+        paddingBottom: "32px",
+        fontSize: "48px",
         color: "white",
-        borderRadius: "20px",
-        marginLeft: "180px",
-    },
-    bellyTube: {
-        backgroundImage: "url('/config/images/bellyTube.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        height: "50vh",
-        weight: "50vw",
-        fontSize: "16px",
-        color: "White",
-        justifyContent: "center",
-    },
-    bellyTubeTitle: {
-        color: "#D0DA91",
-        textAlign: "center",
-        textDecoration: "none",
-        fontSize: "24px",
-        fontFamily: '"Press Start 2P"',
-        paddingTop: "20px",
-    },
-    bellyTubeMintAmount: {
-        color: "#D0DA91",
         textAlign: "center",
         textDecoration: "none",
         fontFamily: '"Press Start 2P"',
-        marginTop: "30px",
-    },
-    bellyTubeMinus: {
-        color: "#D0DA91",
-        textAlign: "center",
-        textDecoration: "none",
-        fontSize: "30px",
-        fontFamily: '"Press Start 2P"',
-        marginTop: "20px",
-        //marginRight: "5px"
-    },
-    bellyTubePlus: {
-        color: "#D0DA91",
-        textAlign: "center",
-        textDecoration: "none",
-        fontSize: "30px",
-        fontFamily: '"Press Start 2P"',
-        marginTop: "20px",
-        //marginLeft: "5px"
+        boxSizing: "border-box",
     },
     mobileFont: {
+        maxWidth: 1440,
+        margin: "0 auto",
+        padding: "16px",
         color: "white",
+        fontSize: "24px",
         textAlign: "center",
         textDecoration: "none",
         fontFamily: '"Press Start 2P"',
+        boxSizing: "border-box",
     },
     teamFont: {
         color: "Yellow",
@@ -124,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const mainMobile = () => {
+const infoCentre = () => {
     const classes = useStyles();
     const [mintAmount, setMintAmount] = useState(1);
     // eslint-disable-next-line
@@ -236,40 +186,27 @@ const mainMobile = () => {
 
     return (
         <Box>
-            <Box m="auto">
-                <img className={classes.mobileImage} src={"/config/images/bellyGold.png"} alt="bellyGold" />
-            </Box>
-            
-            <h1 className={classes.mobileFont}>BellyVerse</h1>
             <p className={classes.mobileFont}>{description}</p>
+            <h1 className={classes.titleBelly}>{greeting}</h1>
+            <h1 className={classes.titleBelly}>{greeting2}</h1>
             <Box className={classes.boxButton}>
                 <Button className={classes.buttonOpensea} onClick={handleMarketClick} variant="outlined">PaintSwap</Button>
             </Box>
             
-            <Box className={classes.bellyTube}>
-                <h1 className={classes.bellyTubeTitle}>Belly Labs</h1>
-                <Grid item xs={12}>
-                    <Grid container justifyContent="center" spacing={6}>
-                        <Grid item>
-                            <Button className={classes.bellyTubeMinus} onClick={handleMinusClick}>-</Button>
-                        </Grid>
-                        <Grid item>
-                            <h1 className={classes.bellyTubeMintAmount}>{mintAmount}</h1>
-                        </Grid>
-                        <Grid item>
-                            <Button className={classes.bellyTubePlus} onClick={handlePlusClick}>+</Button>
-                        </Grid>
-                    </Grid>
-                </Grid>
-                <Box className={classes.boxButton}>
-                    <Button className={classes.buttonMintTube} onClick={handleMintClick}>
-                            Mint
-                    </Button>
-                    <p>{mintAmount*CONFIG.DISPLAY_COST} FTM</p>
-                </Box>
+            <Box>
+                <img className={classes.mobileImage}  src={"/config/images/infoImg1.png"} alt="info Image 1"/>
+                <p className={classes.mobileFont}>{article1}</p>
             </Box>
             <Box>
-                <h2 className={classes.mobileFont}>Roadmap</h2>
+                <img className={classes.mobileImage}  src={"/config/images/infoImg2.png"} alt="info Image 2"/>
+                <p className={classes.mobileFont}>{article2}</p>
+            </Box>
+            <Box>
+                <img className={classes.mobileImage}  src={"/config/images/infoImg3.png"} alt="info Image 3"/>
+                <p className={classes.mobileFont}>{article3}</p>
+            </Box>
+            <Box>
+                <h2 className={classes.titleBelly}>Roadmap</h2>
                 <img className={classes.mobileImage}  src={"/config/images/roadmap.png"} alt="roadmap"/>
                 <h3 className={classes.mobileFont}>2023</h3>
                 <p className={classes.mobileFont}>{roadmap2023}</p>
@@ -277,7 +214,7 @@ const mainMobile = () => {
                 <p className={classes.mobileFont}>{roadmap2024}</p>
             </Box>
             <Box>
-                <h2 className={classes.mobileFont}>Team</h2>
+                <h2 className={classes.titleBelly}>Team</h2>
                 <img className={classes.mobileImage} src={"/config/images/profileBelly.png"} alt="Belly"/>
                 <h3 className={classes.teamFont}>Belly</h3>
                 <h3 className={classes.mobileFont}>Founder</h3>
@@ -292,4 +229,4 @@ const mainMobile = () => {
     )
 }
 
-export default mainMobile
+export default infoCentre

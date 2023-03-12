@@ -1,5 +1,5 @@
 import Konva from "konva";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState} from "react";
 import {
   Circle,
   Group,
@@ -12,6 +12,7 @@ import {
   Text,
 } from "react-konva";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import useImage from "use-image";
 import Tooltip from "./tooltip";
 import useAudio from "./useAudio";
@@ -66,7 +67,7 @@ export default function Main() {
   const [music] = useImage("/config/images/music-icon.png");
   const [noMusic] = useImage("/config/images/music-off-icon.png");
   const bgmUrl = "/config/14 Hope.mp3";
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",
     SCAN_LINK: "",
@@ -1342,6 +1343,7 @@ export default function Main() {
   const [isLabHover, setLabIsHover] = React.useState(false);
   const [isDiscordHover, setDiscordIsHover] = React.useState(false);
   const [isBarHover, setBarIsHover] = React.useState(false);
+  const [isCentreHover, setCentreIsHover] = React.useState(false);
   const [isMintTextHover, setMintTextIsHover] = React.useState(false);
   const [isMintMinusHover, setMintMinusIsHover] = React.useState(false);
   const [isMintPlusHover, setMintPlusIsHover] = React.useState(false);
@@ -1500,8 +1502,23 @@ export default function Main() {
     setTooltipVisible(false);
   };
 
+  const handleCentreEnter = (e) => {
+    setCentreIsHover(true);
+    setTooltipText("Info Centre");
+    setTooltipVisible(true);
+  };
+
+  const handleCentreLeave = (e) => {
+    setCentreIsHover(false);
+    setTooltipVisible(false);
+  };
+
   const handleBarClick = (e) => {
     window.open("https://twitter.com/BellyVerse", "_blank");
+  };
+
+  const handleCentreClick = (e) => {
+    navigate("/infoCentre");
   };
 
   const handleBgmEnter = (e) => {
@@ -1530,6 +1547,7 @@ export default function Main() {
   const lab = facilities().lab;
   const discord = facilities().discord;
   const twitter = facilities().twitter;
+  const infoCentre = facilities().infoCentre;
 
   const tube = facilities().tube;
 
@@ -1577,6 +1595,13 @@ export default function Main() {
     width: (twitter.width * maxWidth) / width,
     height: (twitter.height * maxWidth) / width,
   };
+
+  const aInfoCentre = {
+    x: (infoCentre.x * maxWidth) / width,
+    y: (infoCentre.y * maxWidth) / width,
+    width: (infoCentre.width * maxWidth) / width,
+    height: (infoCentre.height * maxWidth) / width,
+  }
   ///////Minting dialog
 
   const aTube = {
@@ -2037,12 +2062,12 @@ export default function Main() {
           onClick={handleBgmClick}
           onTap={handleBgmClick}
         />
-        {/*<Text
+        <Text
           text={text}
           fontFamily="Press Start 2P"
           fontSize="20"
           fill="red"
-        />*/}
+        />
         <Rect
           id="Market"
           width={aMarket.width}
@@ -2125,6 +2150,19 @@ export default function Main() {
           onMouseLeave={handleBarLeave}
           onClick={handleBarClick}
           onTap={handleBarClick}
+        />
+        <Rect
+          id="infoCentre"
+          width={aInfoCentre.width}
+          height={aInfoCentre.height}
+          x={aInfoCentre.x}
+          y={aInfoCentre.y}
+          fill="white"
+          opacity={isCentreHover ? 0.5 : 0}
+          onMouseEnter={handleCentreEnter}
+          onMouseLeave={handleCentreLeave}
+          onClick={handleCentreClick}
+          onTap={handleCentreClick}
         />
         {mintDialog && (
           <Group>

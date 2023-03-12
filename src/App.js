@@ -4,6 +4,7 @@ import Layout from "./components/navbar";
 import Spaceship from "./components/main";
 import MainMobile from "./components/mainMobile";
 import Collection from "./components/myCollection";
+import InfoCentre from "./components/infoCentre";
 import {
   useTheme,
   useMediaQuery,
@@ -24,6 +25,7 @@ function App() {
           }
           <Route path="gallery" element={<Collection />} />
           <Route path="mainMobile" element={<MainMobile />} />
+          <Route path="infoCentre" element={<InfoCentre/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

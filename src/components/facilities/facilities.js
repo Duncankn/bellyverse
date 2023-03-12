@@ -71,5 +71,12 @@ export default function Facilities() {
     height: 410
   };
 
-  return { wallet, market, gallery, lab, discord, twitter, mintBox, tube };
+  const infoCentre = {
+    x: 380,
+    y: 480,
+    width: 200,
+    height: 220,
+  }
+
+  return { wallet, market, gallery, lab, discord, twitter, mintBox, tube, infoCentre };
 }
