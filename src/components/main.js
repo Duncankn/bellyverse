@@ -19,6 +19,7 @@ import useAudio from "./useAudio";
 import { connect } from "../redux/blockchain/blockchainActions";
 import { fetchData } from "../redux/data/dataActions";
 import facilities from "./facilities/facilities";
+import info from "./infoCentre";
 
 //spaceship
 //================================================
@@ -57,12 +58,16 @@ export default function Main() {
   const [feedback, setFeedback] = useState(`Click buy to mint your NFT.`);
   const [mintAmount, setMintAmount] = useState(1);
   const [mintDialog, setMintDialog] = useState(false);
+  const [infoDialog, setInfoDialog] = useState(false);
 
   // eslint-disable-next-line 
-  const [dialogAnimeStarted, setDialogAnimeStarted] = useState(false);
+  //const [dialogAnimeStarted, setDialogAnimeStarted] = useState(false);
   // eslint-disable-next-line 
-  const [dialogAnimeEnded, setDialogAnimeEnded] = useState(false);
+  //const [dialogAnimeEnded, setDialogAnimeEnded] = useState(false);
   const [bellyTube] = useImage("/config/images/bellyTube.png");
+  const [infoImg1] = useImage("/config/images/infoImg1.png")
+  const [infoImg2] = useImage("/config/images/infoImg2.png")
+  const [infoImg3] = useImage("/config/images/infoImg3.png")
   //const [logo] = useImage("/config/images/polygon.svg");
   const [music] = useImage("/config/images/music-icon.png");
   const [noMusic] = useImage("/config/images/music-off-icon.png");
@@ -1344,10 +1349,12 @@ export default function Main() {
   const [isDiscordHover, setDiscordIsHover] = React.useState(false);
   const [isBarHover, setBarIsHover] = React.useState(false);
   const [isCentreHover, setCentreIsHover] = React.useState(false);
+  const [isInfoCrossHover, setInfoCrossIsHover] = React.useState(false);
   const [isMintTextHover, setMintTextIsHover] = React.useState(false);
   const [isMintMinusHover, setMintMinusIsHover] = React.useState(false);
   const [isMintPlusHover, setMintPlusIsHover] = React.useState(false);
   const [isMintCrossHover, setMintCrossIsHover] = React.useState(false);
+  
   // eslint-disable-next-line 
   const [isBgmHover, setBgmIsHover] = React.useState(false);
   const [musicInit, setMusicInit] = React.useState(false);
@@ -1440,8 +1447,8 @@ export default function Main() {
 
   const closeDialogHandler = (e) => {
     setMintDialog(false);
-    setDialogAnimeStarted(false);
-    setDialogAnimeEnded(false);
+    //setDialogAnimeStarted(false);
+    //setDialogAnimeEnded(false);
   };
 
   const handleMintTextEnter = (e) => {
@@ -1518,7 +1525,20 @@ export default function Main() {
   };
 
   const handleCentreClick = (e) => {
-    navigate("/infoCentre");
+    //navigate("/infoCentre");
+    setInfoDialog(true);
+  };
+
+  const handleInfoCrossEnter = (e) => {
+    setInfoCrossIsHover(true);
+  };
+
+  const handleInfoCrossLeave = (e) => {
+    setInfoCrossIsHover(false);
+  };
+
+  const closeInfoDialogHandler = (e) => {
+    setInfoDialog(false);
   };
 
   const handleBgmEnter = (e) => {
@@ -1602,6 +1622,63 @@ export default function Main() {
     width: (infoCentre.width * maxWidth) / width,
     height: (infoCentre.height * maxWidth) / width,
   }
+  ///////Information Centre
+  const aInfoBackground = {
+    width: maxWidth,
+    height: maxWidth / ratio,
+    x: 0,
+    y: 0,
+    contentWidth: 1000,
+  };
+
+  const aInfoArtical1 = {
+    x: aInfoBackground.x + 200,
+    y: aInfoBackground.y + 430,
+  }
+
+  const aInfoArtical2 = {
+    x: aInfoBackground.x + 200,
+    y: aInfoBackground.y + 750,
+  }
+
+  const aInfoArtical3 = {
+    x: aInfoBackground.x + 200,
+    y: aInfoBackground.y + 1030,
+  }
+
+  const aInfoRoadmap = {
+    y: aInfoBackground.y + 1350,
+  }
+
+  const aInfoTeam = {
+    y: aInfoBackground.y + 1750,
+  }
+
+  const aInfoBellyName = {
+    x: aInfoBackground.x + 400,
+    y: aInfoTeam.y + 1800,
+  }
+
+  const aInfoBellyDesc = {
+    x: aInfoBackground.x + 400,
+    y: aInfoTeam.y + 1830,
+  }
+
+  const aInfoDuncanName = {
+    x: aInfoBackground.x + 400,
+    y: aInfoTeam.y + 2100,
+  }
+
+  const aInfoDuncanDesc = {
+    x: aInfoBackground.x + 400,
+    y: aInfoTeam.y + 2130,
+  }
+
+  const aInfoCross = {
+    x: aInfoBackground.x + aInfoBackground.width,
+    y: aInfoBackground.y,
+  };
+
   ///////Minting dialog
 
   const aTube = {
@@ -1731,7 +1808,7 @@ export default function Main() {
   return (
     <Stage
       width={maxWidth}
-      height={maxWidth * ratio}
+      height={infoDialog ? 2000 : maxWidth * ratio}
       onMouseMove={handleMouseMove}
       onClick={handleMosueClick}
     >
@@ -2294,8 +2371,8 @@ export default function Main() {
               fill="black"
               onClick={closeDialogHandler}
               onTap={closeDialogHandler}
-              onMouseEnter={handleMintCrossEnter}
-              onMouseLeave={handleMintCrossLeave}
+              onMouseEnter={handleInfoCrossEnter}
+              onMouseLeave={handleInfoCrossLeave}
             />
             <Text
               x={aMintCross.x - 16}
@@ -2303,10 +2380,419 @@ export default function Main() {
               text="X"
               fontSize={20}
               fontStyle="bold"
-              fill={isMintCrossHover ? "red" : "white"}
+              fill={isInfoCrossHover ? "red" : "white"}
               opacity={0.7}
               onClick={closeDialogHandler}
               onTap={closeDialogHandler}
+              onMouseEnter={handleInfoCrossEnter}
+              onMouseLeave={handleInfoCrossLeave}
+            />
+          </Group>
+        )}
+        {infoDialog && (
+          <Group>
+            <Rect
+              ref={dialogRef}
+              width={aInfoBackground.width}
+              height={aInfoBackground.height}
+              x={aInfoBackground.x}
+              y={aInfoBackground.y}
+              cornerRadius={5}
+              fill="black"
+              opacity={0.7}
+            />
+
+            
+            <Text
+              //x={aInfoBackground.width/2 - aInfoBackground.contentWidth/2 * scale}
+              y={aInfoBackground.y + 40 * scale}
+              text={info().description}
+              fontSize={18}
+              fontFamily="Press Start 2P"
+              fill="#D0DA91"
+              padding={5}
+              align="center"
+              verticalAlign="middle"
+              width={aInfoBackground.width}
+            />
+            <Text
+              //x={aInfoBackground.width/2 - aInfoBackground.contentWidth/2 * scale}
+              y={aInfoBackground.y + 70 * scale}
+              text={info().description2}
+              fontSize={18}
+              fontFamily="Press Start 2P"
+              fill="#D0DA91"
+              padding={5}
+              align="center"
+              verticalAlign="middle"
+              width={aInfoBackground.width}
+            />
+            <Text
+              //x={aInfoBackground.width/2 - aInfoBackground.contentWidth/2 * scale}
+              y={aInfoBackground.y + 100 * scale}
+              text={info().description3}
+              fontSize={18}
+              fontFamily="Press Start 2P"
+              fill="#D0DA91"
+              padding={5}
+              align="center"
+              verticalAlign="middle"
+              width={aInfoBackground.width}
+            />
+            <Text
+              //x={aInfoBackground.width/2 - aInfoBackground.contentWidth/2 * scale}
+              y={aInfoBackground.y + 150 * scale}
+              text={info().greeting}
+              fontSize={36}
+              fontFamily="Press Start 2P"
+              fill="#D0DA91"
+              padding={5}
+              align="center"
+              verticalAlign="middle"
+              width={aInfoBackground.width}
+            />
+            <Text
+              //x={aInfoBackground.width/2 - aInfoBackground.contentWidth/2 * scale}
+              y={aInfoBackground.y + 200 * scale}
+              text={info().greeting2}
+              fontSize={36}
+              fontFamily="Press Start 2P"
+              fill="#D0DA91"
+              padding={5}
+              align="center"
+              verticalAlign="middle"
+              width={aInfoBackground.width}
+            />
+
+            <Image
+              y={aInfoBackground.y + 250 * scale}
+              image={infoImg1}
+              align="center"
+              verticalAlign="middle"
+              
+            />
+
+            <Text
+              x={aInfoArtical1.x * scale}
+              y={aInfoArtical1.y * scale}
+              text={info().article11}
+              fontSize={18}
+              fontFamily="Press Start 2P"
+              fill="#D0DA91"
+              padding={5}
+              align="left"
+              verticalAlign="middle"
+              width={aInfoBackground.width}
+            /> 
+            <Text
+              x={aInfoArtical1.x * scale}
+              y={(aInfoArtical1.y + 30) * scale}
+              text={info().article12}
+              fontSize={18}
+              fontFamily="Press Start 2P"
+              fill="#D0DA91"
+              padding={5}
+              align="left"
+              verticalAlign="middle"
+              width={aInfoBackground.width}
+            /> 
+            <Text
+              x={aInfoArtical1.x * scale}
+              y={(aInfoArtical1.y +60) * scale}
+              text={info().article13}
+              fontSize={18}
+              fontFamily="Press Start 2P"
+              fill="#D0DA91"
+              padding={5}
+              align="left"
+              verticalAlign="middle"
+              width={aInfoBackground.width}
+            /> 
+            <Text
+              x={aInfoArtical1.x * scale}
+              y={(aInfoArtical1.y + 90) * scale}
+              text={info().article14}
+              fontSize={18}
+              fontFamily="Press Start 2P"
+              fill="#D0DA91"
+              padding={5}
+              align="left"
+              verticalAlign="middle"
+              width={aInfoBackground.width}
+            /> 
+            <Text
+              x={aInfoArtical1.x * scale}
+              y={(aInfoArtical1.y+120) * scale}
+              text={info().article15}
+              fontSize={18}
+              fontFamily="Press Start 2P"
+              fill="#D0DA91"
+              padding={5}
+              align="left"
+              verticalAlign="middle"
+              width={aInfoBackground.width}
+            />
+
+            <Text
+              x={aInfoArtical2.x * scale}
+              y={aInfoArtical2.y * scale}
+              text={info().article21}
+              fontSize={18}
+              fontFamily="Press Start 2P"
+              fill="#D0DA91"
+              padding={5}
+              align="left"
+              verticalAlign="middle"
+              width={aInfoBackground.width}
+            />  
+            <Text
+              x={aInfoArtical2.x * scale}
+              y={(aInfoArtical2.y+30) * scale}
+              text={info().article22}
+              fontSize={18}
+              fontFamily="Press Start 2P"
+              fill="#D0DA91"
+              padding={5}
+              align="left"
+              verticalAlign="middle"
+              width={aInfoBackground.width}
+            /> 
+            <Text
+              x={aInfoArtical2.x * scale}
+              y={(aInfoArtical2.y+60) * scale}
+              text={info().article23}
+              fontSize={18}
+              fontFamily="Press Start 2P"
+              fill="#D0DA91"
+              padding={5}
+              align="left"
+              verticalAlign="middle"
+              width={aInfoBackground.width}
+            /> 
+            <Text
+              x={aInfoArtical2.x * scale}
+              y={(aInfoArtical2.y+90) * scale}
+              text={info().article24}
+              fontSize={18}
+              fontFamily="Press Start 2P"
+              fill="#D0DA91"
+              padding={5}
+              align="left"
+              verticalAlign="middle"
+              width={aInfoBackground.width}
+            />  
+            <Text
+              x={aInfoArtical3.x * scale}
+              y={aInfoArtical3.y * scale}
+              text={info().article31}
+              fontSize={18}
+              fontFamily="Press Start 2P"
+              fill="#D0DA91"
+              padding={5}
+              align="left"
+              verticalAlign="middle"
+              width={aInfoBackground.width}
+            />  
+            <Text
+              x={aInfoArtical3.x * scale}
+              y={(aInfoArtical3.y+30) * scale}
+              text={info().article32}
+              fontSize={18}
+              fontFamily="Press Start 2P"
+              fill="#D0DA91"
+              padding={5}
+              align="left"
+              verticalAlign="middle"
+              width={aInfoBackground.width}
+            /> 
+            <Text
+              x={aInfoArtical3.x * scale}
+              y={(aInfoArtical3.y+60) * scale}
+              text={info().article33}
+              fontSize={18}
+              fontFamily="Press Start 2P"
+              fill="#D0DA91"
+              padding={5}
+              align="left"
+              verticalAlign="middle"
+              width={aInfoBackground.width}
+            /> 
+            <Text
+              x={aInfoArtical3.x * scale}
+              y={(aInfoArtical3.y+90) * scale}
+              text={info().article34}
+              fontSize={18}
+              fontFamily="Press Start 2P"
+              fill="#D0DA91"
+              padding={5}
+              align="left"
+              verticalAlign="middle"
+              width={aInfoBackground.width}
+            />  
+            <Text
+              x={aInfoArtical3.x * scale}
+              y={(aInfoArtical3.y+120) * scale}
+              text={info().article35}
+              fontSize={18}
+              fontFamily="Press Start 2P"
+              fill="#D0DA91"
+              padding={5}
+              align="left"
+              verticalAlign="middle"
+              width={aInfoBackground.width}
+            />  
+            <Text
+              x={aInfoArtical3.x * scale}
+              y={(aInfoArtical3.y+150) * scale}
+              text={info().article36}
+              fontSize={18}
+              fontFamily="Press Start 2P"
+              fill="#D0DA91"
+              padding={5}
+              align="left"
+              verticalAlign="middle"
+              width={aInfoBackground.width}
+            />  
+            <Text
+              x={aInfoArtical3.x * scale}
+              y={(aInfoArtical3.y+180) * scale}
+              text={info().article37}
+              fontSize={18}
+              fontFamily="Press Start 2P"
+              fill="#D0DA91"
+              padding={5}
+              align="left"
+              verticalAlign="middle"
+              width={aInfoBackground.width}
+            />  
+            <Text
+              x={aInfoArtical3.x * scale}
+              y={(aInfoArtical3.y+210) * scale}
+              text={info().article38}
+              fontSize={18}
+              fontFamily="Press Start 2P"
+              fill="#D0DA91"
+              padding={5}
+              align="left"
+              verticalAlign="middle"
+              width={aInfoBackground.width}
+            />  
+
+            <Text
+              y={(aInfoRoadmap.y) * scale}
+              text="Roadmap"
+              fontSize={24}
+              fontFamily="Press Start 2P"
+              fill="#D0DA91"
+              padding={5}
+              align="center"
+              verticalAlign="middle"
+              width={aInfoBackground.width}
+            /> 
+            <Text
+              x={aInfoArtical3.x * scale}
+              y={(aInfoRoadmap.y+100) * scale}
+              text={info().roadmap2023}
+              fontSize={18}
+              fontFamily="Press Start 2P"
+              fill="#D0DA91"
+              padding={5}
+              align="left"
+              verticalAlign="middle"
+              width={aInfoBackground.width}
+            />
+            <Text
+              x={aInfoArtical3.x * scale}
+              y={(aInfoRoadmap.y+130) * scale}
+              text={info().roadmap2024}
+              fontSize={18}
+              fontFamily="Press Start 2P"
+              fill="#D0DA91"
+              padding={5}
+              align="left"
+              verticalAlign="middle"
+              width={aInfoBackground.width}
+            />
+            <Text
+              y={(aInfoTeam.y) * scale}
+              text="Team"
+              fontSize={24}
+              fontFamily="Press Start 2P"
+              fill="#D0DA91"
+              padding={5}
+              align="center"
+              verticalAlign="middle"
+              width={aInfoBackground.width}
+            />
+            <Text
+              x={aInfoBellyName.x * scale}
+              y={(aInfoTeam.y+80) * scale}
+              text={info().nameBelly}
+              fontSize={18}
+              fontFamily="Press Start 2P"
+              fill="#D0DA91"
+              padding={5}
+              align="left"
+              verticalAlign="middle"
+              width={aInfoBackground.width}
+            />
+            <Text
+              x={aInfoBellyDesc.x * scale}
+              y={(aInfoTeam.y+110) * scale}
+              text={info().descriptionBelly}
+              fontSize={18}
+              fontFamily="Press Start 2P"
+              fill="#D0DA91"
+              padding={5}
+              align="left"
+              verticalAlign="middle"
+              width={aInfoBackground.width}
+            />
+            <Text
+              x={aInfoDuncanName.x * scale}
+              y={(aInfoTeam.y+180) * scale}
+              text={info().nameDuncan}
+              fontSize={18}
+              fontFamily="Press Start 2P"
+              fill="#D0DA91"
+              padding={5}
+              align="left"
+              verticalAlign="middle"
+              width={aInfoBackground.width}
+            />
+            <Text
+              x={aInfoDuncanDesc.x * scale}
+              y={(aInfoTeam.y+210) * scale}
+              text={info().descriptionDuncan}
+              fontSize={18}
+              fontFamily="Press Start 2P"
+              fill="#D0DA91"
+              padding={5}
+              align="left"
+              verticalAlign="middle"
+              width={aInfoBackground.width}
+            />
+
+            <Circle
+              x={aInfoCross.x - 10}
+              y={aInfoCross.y + 10}
+              radius={20}
+              fill="black"
+              onClick={closeInfoDialogHandler}
+              onTap={closeInfoDialogHandler}
+              onMouseEnter={handleMintCrossEnter}
+              onMouseLeave={handleMintCrossLeave}
+            />
+            <Text
+              x={aInfoCross.x - 16}
+              y={aInfoCross.y + 2}
+              text="X"
+              fontSize={20}
+              fontStyle="bold"
+              fill={isMintCrossHover ? "red" : "white"}
+              opacity={0.7}
+              onClick={closeInfoDialogHandler}
+              onTap={closeInfoDialogHandler}
               onMouseEnter={handleMintCrossEnter}
               onMouseLeave={handleMintCrossLeave}
             />
